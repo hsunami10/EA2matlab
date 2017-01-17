@@ -13,8 +13,6 @@ eAD = 1/norm(AD) * AD;
 tAB = zeros(length(x), length(z));
 tAC = zeros(length(x), length(z));
 tAD = zeros(length(x), length(z));
-countX = 0;
-countZ = 0;
 
 % Error checks
 if(~isvector(x) || ~isvector(z))
@@ -26,22 +24,20 @@ end
 
 % Run through x and z vectors, store corresponding tensions in outputs
 for ii = 1:length(x)
-countX = countX + 1;
-for jj = 1:length(z)
-    countZ = countZ + 1;
+    for jj = 1:length(z)
 
-    AB = [x(ii) y+4 z(jj)];
-    eAB = 1/norm(AB) * AB;
+        AB = [x(ii) y+4 z(jj)];
+        eAB = 1/norm(AB) * AB;
 
-    aug = [eAC(1) eAD(1) eAB(1) 0;
-           eAC(2) eAD(2) eAB(2) 981;
-           eAC(3) eAD(3) eAB(3) 0];
-    aug = rref(aug);
+        aug = [eAC(1) eAD(1) eAB(1) 0;
+               eAC(2) eAD(2) eAB(2) 981;
+               eAC(3) eAD(3) eAB(3) 0];
+        aug = rref(aug);
 
-    tAC(ii, jj) = aug(1, 4);
-    tAD(ii, jj) = aug(2, 4);
-    tAB(ii, jj) = aug(3, 4);
-end
+        tAC(ii, jj) = aug(1, 4);
+        tAD(ii, jj) = aug(2, 4);
+        tAB(ii, jj) = aug(3, 4);
+    end
 end
 
 % Graph x, z, tension here
