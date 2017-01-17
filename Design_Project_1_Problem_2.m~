@@ -1,0 +1,79 @@
+function cost = Design_Project_1_Problem_2(x, y, z)
+% This function calculates cost with relation to the position of B
+% Inputs: x, y, z coordinates of B
+% Output: Cost matrix and graph
+
+% EA 2 Design Project 1 Problem 2
+% Michael Hsu
+% NetID: mkh3212
+
+% Initialize
+AC = [-3 4 -2];
+AD = [-2 4 3];
+AB = zeros(1, 3);
+eAC = 1/norm(AC) * AC;
+eAD = 1/norm(AD) * AD;
+tAB = zeros(1,961);
+lengthAB = zeros(1,961);
+cost = zeros(961,961);
+matrixT = zeros(size(cost));
+matrixL = zeros(size(cost));
+realCost = [];
+X = [];
+Z = [];
+aug = zeros(3, 4);
+index = 0;
+countX = 0;
+countZ = 0;
+count = 0;
+
+if(length(x) ~= length(z))
+   error('X and Z vectors have to be the same le 
+end
+
+% x has to be equal to or larger than zero
+for 1:length(x)
+    countX = countX + 1;
+    for 1:length(z)
+        index = index + 1;
+        countZ = countZ + 1;
+        
+        AB = [x 4 z];
+        eAB = 1/norm(AB) * AB;
+        
+        aug = [eAC(1) eAD(1) eAB(1) 0;
+               eAC(2) eAD(2) eAB(2) 981;
+               eAC(3) eAD(3) eAB(3) 0];
+        aug = rref(aug);
+        
+        % Vector of tension forces, corresponding lengths, and cost
+        tAB(index) = aug(3, 4);
+        lengthAB(index) = norm(AB);
+        cost(index, index) = tAB(index) * lengthAB(index);
+        
+        % Cost has to be greater than or equal to zero, so make a vector of
+        % those costs and store corresponding X and Z locations
+        if(cost(index, index) >= 0 && tAB(index) <= 981)
+            count = count + 1;
+            realCost(count) = cost(index, index);
+            X(count) = x;
+            Z(count) = z;
+        end
+    end
+end
+
+matrixT = repmat(tAB, length(tAB), 1);
+matrixL = repmat(lengthAB', 1, length(lengthAB));
+cost = matrixT .* matrixL;
+
+% Find the minimum cost, then find the x and z values for that min cost
+minimum = min(realCost);
+ind = find(realCost == minimum,1);
+fprintf('Minimum cost: $%.2f\nX location: %.2f\nZ location: %.2f\n', minimum, X(ind), Z(ind));
+
+figure;
+surf(tAB, lengthAB, cost);
+title('Relationship between tension, length, and cost');
+xlabel('Tension');
+ylabel('Length');
+zlabel('Cost');

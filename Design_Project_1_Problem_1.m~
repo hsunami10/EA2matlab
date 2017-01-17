@@ -1,0 +1,57 @@
+function [tAB, tAC, tAD] = Design_Project_1_Problem_1(x,y,z)
+% This function calculates the tensions in all cables due to B coords
+% Input: Vectors x, y, z
+% Output: Vectors (corresponding tensions) tAB, tAD, tAC
+
+% EA 2 Design Project 1 Problem 1
+% Michael Hsu
+% NetID: mkh3212
+
+% Initialize
+AC = [-3 4 -2];
+AD = [-2 4 3];
+eAC = 1/norm(AC) * AC;
+eAD = 1/norm(AD) * AD;
+tAB = zeros(length(x), length(z));
+tAC = zeros(length(x), length(z));
+tAD = zeros(length(x), length(z));
+countX = 0;
+countZ = 0;
+
+% Error checks
+if(length(x) ~= length(z))
+    error('Make sure the x and z vector coordinates have equal length.');
+end
+if(~isvector(x) || ~isvector(z))
+    error('Make sure x and z are vectors');
+end
+
+% Run through x and z vectors, store corresponding tensions in outputs
+for ii = 1:length(x)
+    countX = countX + 1;
+    for jj = 1:length(z)
+        countZ = countZ + 1;
+       
+        AB = [x(ii) y+4 z(jj)];
+        eAB = 1/norm(AB) * AB;
+
+        aug = [eAC(1) eAD(1) eAB(1) 0;
+               eAC(2) eAD(2) eAB(2) 981;
+               eAC(3) eAD(3) eAB(3) 0];
+        aug = rref(aug);
+
+        tAC(ii, jj) = aug(1, 4);
+        tAD(ii, jj) = aug(2, 4);
+        tAB(ii, jj) = aug(3, 4);
+    end
+end
+
+% Graph x, z, tension here
+figure(1);
+surf(tAB);
+title('Position of B on Tension AB');
+xlabel('X Coordinates');
+ylabel('Z Coordinates');
+z
+
+end
