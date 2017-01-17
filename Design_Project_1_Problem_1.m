@@ -25,7 +25,7 @@ end
 % Run through x and z vectors, store corresponding tensions in outputs
 for ii = 1:length(x)
     for jj = 1:length(z)
-
+        
         AB = [x(ii) y+4 z(jj)];
         eAB = 1/norm(AB) * AB;
 

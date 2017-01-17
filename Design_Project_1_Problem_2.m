@@ -49,8 +49,7 @@ for ii = 1:length(x)
         lengthAB(index) = norm(AB);
         cost(index, index) = tAB(index) * lengthAB(index);
         
-        % Cost has to be greater than or equal to zero, so make a vector of
-        % those costs and store corresponding X and Z locations
+        % To find x and z value at min cost
         if(cost(index, index) >= 0 && tAB(index) <= 981)
             count = count + 1;
             realCost(count) = cost(index, index);
@@ -64,7 +63,7 @@ for ii = 1:length(x)
 end
 
 % Find the minimum cost, then find the x and z values for that min cost
-minimum = min(realCost);
+minimum = min(min(costs));
 ind = find(realCost == minimum,1);
 fprintf('Minimum cost: $%.2f\nX location: %.2f\nZ location: %.2f\n', minimum, X(ind), Z(ind));
 
