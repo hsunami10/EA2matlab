@@ -1,10 +1,10 @@
+% Project 2 Problem 1
+
 % Initialize variables
 k = 10;
 magBE = 17;
 magEA = sqrt(106);
 magBA = 0;
-eBA = 0;
-vecBA = [];
 Fs = k*magBA;
 a = 0:90;
 magMom = zeros(1, length(a));
