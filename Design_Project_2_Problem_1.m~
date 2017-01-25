@@ -26,6 +26,3 @@ end
 
 figure;
 plot(a, magMom);
-title('Moment vs Alpha')
-xlabel('Angle of Alpha (in degrees)')
-ylabel('Moment about E (lb*in)')

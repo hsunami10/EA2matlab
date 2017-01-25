@@ -46,18 +46,18 @@ surf(x,z,tAB);
 title('Position of B on Tension AB');
 xlabel('X Coordinates');
 ylabel('Z Coordinates');
-zlabel('Tension');
+zlabel('Tension (N)');
 
 figure(2);
 surf(x,z,tAC);
 title('Position of B on Tension AC');
 xlabel('X Coordinates');
 ylabel('Z Coordinates');
-zlabel('Tension');
+zlabel('Tension (N)');
 
 figure(3);
 surf(x,z,tAD);
 title('Position of B on Tension AD');
 xlabel('X Coordinates');
 ylabel('Z Coordinates');
-zlabel('Tension');
+zlabel('Tension (N)');

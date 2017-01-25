@@ -16,7 +16,7 @@ lengthAB = zeros(1,length(x) * length(z));
 cost = zeros(length(x), length(z));
 costs = zeros(length(x), length(z));
 realCost = [];
-X = [];
+X = [];2
 Z = [];
 aug = zeros(3, 4);
 index = 0;
@@ -72,4 +72,4 @@ surf(x, z, costs);
 title('Relationship between x-coordinates, z-coordinates, and cost');
 xlabel('X Coordinates');
 ylabel('Z Coordinates');
-zlabel('Cost');
+zlabel('Cost ($)');
