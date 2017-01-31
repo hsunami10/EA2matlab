@@ -25,7 +25,7 @@ for B = 20:90
     
         % Tension
         %Tbc(ii,jj) = (x1*N1*sind(a) + x2*N2*sind(a) + x3*N3*sind(a))/(Lo*sind(180-B-a));
-        Tbc(ii, jj) = ((x1*N1) + (x2*N2) + (x3*N3))/(Lo*sind(180-B-a));
+        Tbc(ii, jj) = (x1*N1 + x2*N2 + x3*N3)/(Lo*sind(180-B-a));
     end
 end
 B = 20:90;

@@ -20,7 +20,7 @@ for ii = 1:51
     N3 = N2;
     
     % Tension
-    Tbc(ii) = ((x1*N1) + (x2*N2) + (x3*N3))/(Lo*sind(90-a(ii)));
+    Tbc(ii) = (x1*N1 + x2*N2 + x3*N3)/(Lo*sind(90-a(ii)));
 end
 % Change signs of tension in the future
 figure;
