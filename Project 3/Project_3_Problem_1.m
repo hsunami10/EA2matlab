@@ -15,8 +15,7 @@ for ii = 1:51
     x3 = r/tand(a(ii)/2) + 4*r;
     
     % Normal force
-    %N1 = (3*m*g*cosd(a(ii))^2)/sind(a(ii)) + m*g*sind(a(ii));
-    N1 = (2*m*g*(cosd(a(ii))^2) + m*g)/(sind(a(ii)));
+    N1 = (3*m*g*cosd(a(ii))^2)/sind(a(ii)) + m*g*sind(a(ii));
     N2 = m*g*sind(a(ii));
     N3 = N2;
     
