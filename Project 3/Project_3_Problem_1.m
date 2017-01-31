@@ -15,12 +15,13 @@ for ii = 1:51
     x3 = r/tand(a(ii)/2) + 4*r;
     
     % Normal force
-    N1 = (3*m*g*cosd(a(ii))^2)/sind(a(ii)) + m*g*sind(a(ii));
+    %N1 = (3*m*g*cosd(a(ii))^2)/sind(a(ii)) + m*g*sind(a(ii));
+    N1 = (2*m*g*(cosd(a(ii))^2) + m*g)/(sind(a(ii)));
     N2 = m*g*sind(a(ii));
     N3 = N2;
     
     % Tension
-    Tbc(ii) = (x1*N1*sind(a(ii)) + x2*N2*sind(a(ii)) + x3*N3*sind(a(ii)))/(Lo*sind(90-a(ii)));
+    Tbc(ii) = ((x1*N1) + (x2*N2) + (x3*N3))/(Lo*sind(90-a(ii)));
 end
 % Change signs of tension in the future
 figure;
