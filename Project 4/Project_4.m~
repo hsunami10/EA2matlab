@@ -1,0 +1,19 @@
+% EA2 Design Project 4
+
+Fae = zeros(71, 71);
+ii = 0;
+jj = 0;
+
+for theta = 10:80
+    ii = ii + 1;
+    jj = 0;
+    for L = 1:increments:10
+       jj = jj + 1;
+       
+       Fab(ii, jj) = ((L*cosd(theta)/2) - (0.2*L*cosd(theta)*(L-L*sind(theta))
+    end
+end
+
+theta = 10:80;
+increments = 10/78;
+L = 1:increments:10;
